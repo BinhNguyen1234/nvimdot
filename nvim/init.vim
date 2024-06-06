@@ -35,10 +35,10 @@ call plug#end()
 
 " config for F12 go to definit
 "
-nmap <silent> <F12> :call CocAction('jumpDefinition', 'vsplit')<CR>
-nmap <silent> <F36> <Plug>(coc-type-definition)
-nmap <silent> <F24> <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+"nmap <silent> <F12> :call CocAction('jumpDefinition', 'vsplit')<CR>
+"nmap <silent> <F36> <Plug>(coc-type-definition)
+"nmap <silent> <F24> <Plug>(coc-implementation)
+"nmap <silent> gr <Plug>(coc-references)
 
 " config for tab
 
@@ -63,9 +63,15 @@ cmp.setup {
     { name = 'nvim_lsp' }
   },
 	mapping = cmp.mapping.preset.insert({})
-}
+ }
 
  vim.lsp.start()
+ 
+ lspconfig.clangd.setup{
+	capabilities = cmp_nvim_lsp.default_capabilities(),
+ }
+
+
  local set = vim.pot
 
  vim.o.number = true
@@ -74,9 +80,6 @@ cmp.setup {
  vim.keymap.set('','<C-t>l','<ESC>:tabnext<CR>',{noremap = true, silent = false})
  vim.keymap.set('', '<C-t>h', '<ESC>:tabprevious<CR>',{noremap = true, silent = false})
  vim.keymap.set('','<C-t>o','<ESC>:tabc<CR>',{noremap = true, silent = false})
- lspconfig.clangd.setup{
-	capabilities = cmp_nvim_lsp.default_capabilities(),
-}
  
  vim.api.nvim_create_autocmd({'VimEnter'},{
 	callback = function()
