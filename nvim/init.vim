@@ -18,7 +18,7 @@ Plug 'preservim/nerdtree'|
 " Install code cpp suggestion
 "Plug 'Shougo/deoplete.nvim'
 "Plug 'zchee/deoplete-clang'
-" Prerequisite for install telescope for looking file
+" Prerequisite for install telescope for looking fileffff
 
 " themes
 "status bar
