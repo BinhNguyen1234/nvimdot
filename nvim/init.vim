@@ -1,17 +1,14 @@
 set encoding=utf-8
-
-
-
-
 call plug#begin("~/.config/nvim/lua")
 "Install vim devicon
 
 Plug 'ryanoasis/vim-devicons'
 
-
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'folke/tokyonight.nvim'
 
 
 
@@ -24,8 +21,6 @@ Plug 'preservim/nerdtree'|
 " Prerequisite for install telescope for looking file
 
 " themes
-Plug 'joshdick/onedark.vim'
-
 "status bar
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -47,6 +42,24 @@ call plug#end()
 
 
 lua << EOF
+
+vim.cmd('syntax enable')
+vim.cmd('colorscheme tokyonight-night')
+
+
+require'nvim-treesitter.configs'.setup{
+ensure_installed = { "c", "cpp" , "lua", "vim", "vimdoc", "query" },
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+ sync_install = false,
+
+  -- Automatically install missing parsers when entering buffer
+  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+ auto_install = true,
+highlight = {
+    enable = true,
+	additional_vim_regex_highlighting = false
+}
+}
 -- package.path = package.path .. ';~/.config/nvim/lua/'
 -- nvim-cmp
  local cmp = require('cmp')
