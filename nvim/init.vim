@@ -1,7 +1,7 @@
 set encoding=utf-8
 call plug#begin("~/.config/nvim/lua")
 "Install vim devicon
-
+set clipboard+=unnamedplus
 Plug 'ryanoasis/vim-devicons'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
@@ -44,7 +44,6 @@ call plug#end()
 lua << EOF
 vim.cmd("syntax on")
 vim.cmd("colorscheme tokyonight-night")
-
 require'nvim-treesitter.configs'.setup{
 ensure_installed = { "c", "cpp" , "lua", "vim", "vimdoc", "query" },
   -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -92,9 +91,11 @@ local on_attach = function(client, bufnr)
  }
 
 
- local set = vim.pot
-
- vim.o.number = true
+ local set = vim.opt
+set.autoindent = true
+set.shiftwidth = 2
+set.mouse = ""
+vim.o.number = true
 
 vim.keymap.set('', '<F12>', ':NERDTreeToggle<CR>')
 
@@ -114,12 +115,21 @@ vim.api.nvim_create_autocmd({'CursorHold'},{
 		vim.lsp.buf.hover()
 	end
  })
-
+ vim.api.nvim_create_autocmd({'VimEnter'},{
+	callback = function()
+		vim.cmd('NERDTree')
+	end
+ })
 
 
  vim.api.nvim_create_autocmd({'VimEnter'},{
 	callback = function()
-		vim.cmd('NERDTree')
+    		local tab_count = vim.fn.tabpagenr('$')
+    		local win_count = vim.fn.winnr('$')
+    		if tab_count == 1 and win_count == 1 and vim.b.NERDTree and vim.b.NERDTree.isTabTree() then
+			vim.print("Tigger")
+    		end
+
 	end
  })
 
