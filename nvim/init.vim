@@ -102,7 +102,7 @@ vim.keymap.set('', '<F12>', ':NERDTreeToggle<CR>')
  vim.keymap.set('', '<F5>', ':NERDTreeToggle<CR>')
  vim.keymap.set('','<C-t>l','<ESC>:tabnext<CR>',{noremap = true, silent = false})
  vim.keymap.set('', '<C-t>h', '<ESC>:tabprevious<CR>',{noremap = true, silent = false})
- vim.keymap.set('','<C-t>o','<ESC>:tabc<CR>',{noremap = true, silent = false})
+ vim.keymap.set('','<C-t>c','<ESC>:tabc<CR>',{noremap = true, silent = false})
  
 
  vim.api.nvim_create_autocmd({'CursorHoldI'},{
