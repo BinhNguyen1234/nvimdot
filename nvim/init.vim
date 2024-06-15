@@ -95,6 +95,7 @@ local on_attach = function(client, bufnr)
 set.autoindent = true
 set.shiftwidth = 2
 set.mouse = ""
+set.autowriteall = true
 vim.o.number = true
 
 vim.keymap.set('', '<F12>', ':NERDTreeToggle<CR>')
