@@ -104,7 +104,12 @@ vim.keymap.set('', '<F12>', ':NERDTreeToggle<CR>')
  vim.keymap.set('','<C-t>l','<ESC>:tabnext<CR>',{noremap = true, silent = false})
  vim.keymap.set('', '<C-t>h', '<ESC>:tabprevious<CR>',{noremap = true, silent = false})
  vim.keymap.set('','<C-t>c','<ESC>:tabc<CR>',{noremap = true, silent = false})
- 
+ vim.keymap.set('i','{','{}<left>',{noremap = true}) 
+ vim.keymap.set('i',"'","''<left>",{noremap = true}) 
+ vim.keymap.set('i','"','""<left>',{noremap = true}) 
+ vim.keymap.set('i','[','[]<left>',{noremap = true}) 
+ vim.keymap.set('i','(','()<left>',{noremap = true}) 
+
 
  vim.api.nvim_create_autocmd({'CursorHoldI'},{
 	callback = function()
