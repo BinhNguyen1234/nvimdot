@@ -6,6 +6,8 @@ node
 
 pip
 
+clangd (language sever for cpp)
+
 vim-plug
 
-ff
+
