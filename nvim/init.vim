@@ -5,9 +5,17 @@ set clipboard+=unnamedplus
 Plug 'ryanoasis/vim-devicons'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+"nvim built in langua server protocq"
 Plug 'neovim/nvim-lspconfig'
+
+
+" Completion for nvim"
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
+
+
+
 Plug 'folke/tokyonight.nvim'
 
 
