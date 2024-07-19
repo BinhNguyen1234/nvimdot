@@ -8,7 +8,7 @@ call plug#begin()
 "Install vim devicon
 Plug 'ryanoasis/vim-devicons'
 
-
+" Install langue server protocol
 Plug 'neovim/nvim-lspconfig'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
