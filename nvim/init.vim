@@ -4,6 +4,10 @@ call plug#begin("~/.config/nvim/lua")
 set clipboard+=unnamedplus
 Plug 'ryanoasis/vim-devicons'
 
+" highlight syntax for angular"
+
+"intall highlight syntax plugin and auto install if that language not exist in
+"machine"
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 "nvim built in langua server protocq"
@@ -80,8 +84,8 @@ cmp.setup {
   sources = {
     { name = 'nvim_lsp' }
   },
-	mapping = cmp.mapping.preset.insert({})
- }
+  mapping = cmp.mapping.preset.insert({})
+}
 
  vim.lsp.start()
  
@@ -93,11 +97,17 @@ local on_attach = function(client, bufnr)
   vim.keymap.set('n', '<F12>', function() vim.lsp.buf.declaration() end, { noremap = true, silent = false })
   vim.keymap.set('n', '<C-F12>', function() vim.lsp.buf.definition() end, { noremap = true, silent = false })
   vim.keymap.set('n', '<F11>', vim.lsp.buf.references, { noremap = true, silent = false })end
+
+  -- lsp config for cpp (clangd)
  lspconfig.clangd.setup{
 	capabilities = cmp_nvim_lsp.default_capabilities(),
 	on_attach = on_attach,
  }
 
+ --ls config for angular
+
+ lspconfig.angularls.setup{
+ }
 
  local set = vim.opt
 set.autoindent = true
