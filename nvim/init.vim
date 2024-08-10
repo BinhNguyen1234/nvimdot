@@ -105,8 +105,9 @@ local on_attach = function(client, bufnr)
  }
 
  --ls config for angular
-
  lspconfig.angularls.setup{
+	capabilities = cmp_nvim_lsp.default_capabilities(),
+	cmd = {"ngserver", "--stdio", "--tsProbeLocations", "" , "--ngProbeLocations", "", "--forceStrictTemplates"}
  }
 
  local set = vim.opt
